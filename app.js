@@ -8,6 +8,8 @@ const homeStartingContent = "Lacus vel facilisis volutpat est velit egestas dui 
 const aboutContent = "Hac habitasse platea dictumst vestibulum rhoncus est pellentesque. Dictumst vestibulum rhoncus est pellentesque elit ullamcorper. Non diam phasellus vestibulum lorem sed. Platea dictumst quisque sagittis purus sit. Egestas sed sed risus pretium quam vulputate dignissim suspendisse. Mauris in aliquam sem fringilla. Semper risus in hendrerit gravida rutrum quisque non tellus orci. Amet massa vitae tortor condimentum lacinia quis vel eros. Enim ut tellus elementum sagittis vitae. Mauris ultrices eros in cursus turpis massa tincidunt dui.";
 const contactContent = "Scelerisque eleifend donec pretium vulputate sapien. Rhoncus urna neque viverra justo nec ultrices. Arcu dui vivamus arcu felis bibendum. Consectetur adipiscing elit duis tristique. Risus viverra adipiscing at in tellus integer feugiat. Sapien nec sagittis aliquam malesuada bibendum arcu vitae. Consequat interdum varius sit amet mattis. Iaculis nunc sed augue lacus. Interdum posuere lorem ipsum dolor sit amet consectetur adipiscing elit. Pulvinar elementum integer enim neque. Ultrices gravida dictum fusce ut placerat orci nulla. Mauris in aliquam sem fringilla ut morbi tincidunt. Tortor posuere ac ut consequat semper viverra nam libero.";
 
+let dayItem = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem, nihil doloribus rerum reiciendis neque recusandae dolorem odio veritatis quo tenetur quidem nam repudiandae a sapiente libero vitae ea id numquam!Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem, nihil doloribus rerum reiciendis neque recusandae dolorem odio veritatis quo tenetur quidem nam repudiandae a sapiente libero vitae ea id numquam!";
+
 const app = express();
 
 app.set('view engine', 'ejs');
@@ -19,12 +21,22 @@ app.use(express.static("public"));
 
 
 
+app.get("/", (req, res) => {
+  if (dayItem.length > 100 ) {
+    let shortDayItem = dayItem.slice(0, 100);
+    res.render("home", {homePageTitle: homeStartingContent, dayItems: shortDayItem});
+  } else {
+    res.render("home", {homePageTitle: homeStartingContent, dayItems: dayItem});
+  }
+});
 
+app.get("/about", (req, res) => {
+  res.render("about", {aboutInfo: aboutContent});
+});
 
-
-
-
-
+app.get("/contact", (req, res) => {
+  res.render("contact", {contactInfo: contactContent});
+});
 
 
 
