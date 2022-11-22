@@ -38,3 +38,21 @@
 h1 {
     text-transform: uppercase;
 }
+
+button {
+    margin-top: 10px;
+	background-color: #5183ff;
+    color:#fff;
+    border-radius: 3px;
+    border-style: none;
+    width: 80px;
+    height: 30px;
+}
+
+.title {
+    margin-top: 10px;
+}
+
+#text, textarea {
+    width: 100%;
+}

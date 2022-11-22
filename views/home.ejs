@@ -11,9 +11,16 @@
     <p><%= dayItems %></p>
 </div>
 
-<div>
-    <h2>Day 2</h2>
-    <p><%= dayItems %></p>
-</div>
+<% posts.forEach((post) => { %>
+    <h2><%= post.title %></h2>
 
-<%- include('footer') -%>
+    <% if (post.content.length > 100) { %>
+        <p>
+        <%= post.content.substring(0, 100) + " ... "  %> 
+        <a href="/posts/<%=post.title%>">Read more</a>
+        </p>
+    <% } else { %>
+        <p><%= post.content %></p>
+    <% } %>
+<% }); %>
+
